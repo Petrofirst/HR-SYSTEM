@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - نظام إدارة الموارد البشرية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo-small.png" alt="Company Logo">
+                <h3>إدارة الموارد البشرية</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a></li>
+                <li>
+                    <a href="#employee-management" class="dropdown-toggle"><i class="fas fa-users"></i> إدارة الموظفين <i class="fas fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="employees.html">قاعدة بيانات الموظفين</a></li>
+                        <li><a href="add-employee.html">إضافة موظف جديد</a></li>
+                        <li><a href="employee-documents.html">مستندات الموظفين</a></li>
+                    </ul>
+                </li>
+                <li><a href="contracts.html"><i class="fas fa-file-contract"></i> عقود العمل</a></li>
+                <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> الحضور والإنصراف</a></li>
+                <li><a href="leaves.html"><i class="fas fa-calendar-alt"></i> إدارة الأجازات</a></li>
+                <li><a href="payroll.html"><i class="fas fa-money-bill-wave"></i> الرواتب والمستحقات</a></li>
+                <li><a href="recruitment.html"><i class="fas fa-user-plus"></i> التوظيف والاختيار</a></li>
+                <li><a href="training.html"><i class="fas fa-graduation-cap"></i> التدريب والتطوير</a></li>
+                <li><a href="performance.html"><i class="fas fa-chart-line"></i> تقييم الأداء</a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-pie"></i> التقارير والإحصائيات</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> الإعدادات</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="assets/images/user-avatar.png" alt="User Avatar">
+                    <div class="user-info">
+                        <span class="user-name">محمد أحمد</span>
+                        <span class="user-role">مدير الموارد البشرية</span>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="breadcrumb">
+                    <span><i class="fas fa-home"></i></span>
+                    <span>لوحة التحكم</span>
+                </div>
+                <div class="top-bar-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </div>
+                    <div class="messages">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="language-switcher">
+                        <select id="language-switcher">
+                            <option value="ar">العربية</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="welcome-section">
+                    <h1>مرحباً بك، محمد أحمد</h1>
+                    <p>هذه نظرة عامة على نظام إدارة الموارد البشرية الخاص بك</p>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>إجمالي الموظفين</h3>
+                            <p>245</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>حضور اليوم</h3>
+                            <p>198</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>إجازات اليوم</h3>
+                            <p>32</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-danger">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>متأخرين اليوم</h3>
+                            <p>15</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <h3>إحصائيات الحضور لهذا الشهر</h3>
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>توزيع الموظفين حسب الإدارات</h3>
+                        <canvas id="departmentChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="tables-row">
+                    <div class="table-container">
+                        <h3>آخر الموظفين المضافين</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>الرقم الموظف</th>
+                                    <th>الاسم</th>
+                                    <th>الوظيفة</th>
+                                    <th>القسم</th>
+                                    <th>تاريخ التعيين</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>EMP-1024</td>
+                                    <td>أحمد محمد</td>
+                                    <td>مبرمج</td>
+                                    <td>تكنولوجيا المعلومات</td>
+                                    <td>15/10/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP-1023</td>
+                                    <td>سارة خالد</td>
+                                    <td>محاسبة</td>
+                                    <td>المالية</td>
+                                    <td>12/10/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP-1022</td>
+                                    <td>علي حسن</td>
+                                    <td>مدير مبيعات</td>
+                                    <td>المبيعات</td>
+                                    <td>10/10/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP-1021</td>
+                                    <td>فاطمة عمر</td>
+                                    <td>مسؤول موارد بشرية</td>
+                                    <td>الموارد البشرية</td>
+                                    <td>05/10/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP-1020</td>
+                                    <td>محمد عبدالله</td>
+                                    <td>مهندس</td>
+                                    <td>الهندسة</td>
+                                    <td>01/10/2023</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>إجازات قيد الانتظار للموافقة</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>الموظف</th>
+                                    <th>نوع الإجازة</th>
+                                    <th>من تاريخ</th>
+                                    <th>إلى تاريخ</th>
+                                    <th>الإجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>أحمد محمد</td>
+                                    <td>إجازة سنوية</td>
+                                    <td>20/11/2023</td>
+                                    <td>25/11/2023</td>
+                                    <td>
+                                        <button class="btn-approve">موافقة</button>
+                                        <button class="btn-reject">رفض</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>سارة خالد</td>
+                                    <td>إجازة مرضية</td>
+                                    <td>15/11/2023</td>
+                                    <td>18/11/2023</td>
+                                    <td>
+                                        <button class="btn-approve">موافقة</button>
+                                        <button class="btn-reject">رفض</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>علي حسن</td>
+                                    <td>إجازة عارضة</td>
+                                    <td>10/11/2023</td>
+                                    <td>10/11/2023</td>
+                                    <td>
+                                        <button class="btn-approve">موافقة</button>
+                                        <button class="btn-reject">رفض</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="announcements">
+                    <h3>الإعلانات الهامة</h3>
+                    <div class="announcement-card">
+                        <div class="announcement-date">15 نوفمبر 2023</div>
+                        <div class="announcement-title">ورشة عمل عن قانون العمل الجديد</div>
+                        <div class="announcement-content">
+                            سيتم عقد ورشة عمل عن التعديلات الجديدة في قانون العمل الإماراتي يوم الأربعاء الموافق 20 نوفمبر في قاعة الاجتماعات الرئيسية.
+                        </div>
+                    </div>
+                    <div class="announcement-card">
+                        <div class="announcement-date">10 نوفمبر 2023</div>
+                        <div class="announcement-title">موعد صرف الرواتب</div>
+                        <div class="announcement-content">
+                            سيتم صرف رواتب شهر نوفمبر يوم الخميس الموافق 25 نوفمبر. يرجى مراجعة كشوف الرواتب والتأكد من صحتها.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

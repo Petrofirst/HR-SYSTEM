@@ -1,0 +1,26 @@
+{
+  "name": "hr-system-uae",
+  "version": "1.0.0",
+  "description": "Human Resources Management System compliant with UAE Labor Law",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hr",
+    "uae",
+    "labor",
+    "law",
+    "management",
+    "system"
+  ],
+  "author": "Your Company",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^2.9.4"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
