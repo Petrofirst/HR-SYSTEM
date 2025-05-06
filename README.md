@@ -1,4 +1,3 @@
-# HR-SYSTEM
 # نظام إدارة الموارد البشرية - الإمارات العربية المتحدة
 
 نظام متكامل لإدارة الموارد البشرية يتوافق مع قوانين العمل في دولة الإمارات العربية المتحدة
@@ -48,4 +47,4 @@
 
 1. انسخ مستودع GitHub:
    ```bash
-   git clone https://github.com/username/hrms-uae.git
+   git clone https://petrofirst.github.io/HR-SYSTEM/
